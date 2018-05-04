@@ -9,11 +9,13 @@ get_status() {
         status="N/A:N/A"
     else
         context=$(kubectl config current-context)
-        if !(kubectl config view | grep namespace)
+        result=$(kubectl config view | grep namespace)
+
+        if [ -z "$result" ]
         then
             namespace="N/A"
         else
-            namespace=$(kubectl config view | grep namespace | awk '{ print $2 }')
+            namespace=$(echo $result | awk '{ print $2 }')
         fi
         status="${context}:${namespace}"
     fi
