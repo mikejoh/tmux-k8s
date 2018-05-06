@@ -25,7 +25,7 @@ set -g @plugin 'mikejoh/tmux-k8s'
 
 1. Create the tmux plugin directory and clone this repository:
 ```
-mkdir -p ~/.tmux/plugins && git clone https://github.com/mikejoh/tmux-k8s.git ~/.tmux/plugins/
+mkdir -p ~/.tmux/plugins && git clone https://github.com/mikejoh/tmux-k8s.git ~/.tmux/plugins/tmux-k8s
 ```
 2. Press [prefix] + `I` to install.
 
