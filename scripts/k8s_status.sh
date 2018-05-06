@@ -6,7 +6,7 @@ get_status() {
     status=""
     if !(hash kubectl) 2>/dev/null
     then
-        status="N/A:N/A"
+        status="N/A:N/A()"
     else
         context=$(kubectl config current-context)
         result=$(kubectl config view | grep namespace)
@@ -17,7 +17,9 @@ get_status() {
         else
             namespace=$(echo $result | awk '{ print $2 }')
         fi
-        status="${context}:${namespace}"
+        num_pods=$(kubectl get pods --no-headers | wc -l | awk '{ print $1 }')
+
+        status="${context}:${namespace}(${num_pods})"
     fi
         
     echo "$status"
