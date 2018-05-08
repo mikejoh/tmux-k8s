@@ -1,6 +1,6 @@
 # The tmux Kubernetes status plugin
 
-This `tmux` plugin shows you the current Kubernetes context and namespace you're using.
+This `tmux` plugin shows you the current Kubernetes context and namespace you're using (+ the number of pods running within the namespace).
 
 ![k8s status bar](status_bar_with_k8s_plugin.png)
 
