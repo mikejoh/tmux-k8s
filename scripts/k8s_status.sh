@@ -3,10 +3,10 @@
 # Uses kubectl to fetch information about the context and the namespace
 
 get_status() {
-    status=""
+
     if !(hash kubectl) 2>/dev/null
     then
-        status="N/A:N/A()"
+        status="kubectl not found!"
     else
         context=$(kubectl config current-context)
         result=$(kubectl config view | grep namespace)
