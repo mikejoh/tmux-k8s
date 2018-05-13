@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-# Uses kubectl to fetch information about the context and the namespace
+# Tmux status bar script to fetch information on k8s environments
+
+get_pods() {
+    pods=$(kubectl get pods --no-headers | wc -l | awk '{ print $1 }')
+    echo "$pods"
+}
 
 get_status() {
 
@@ -17,9 +22,10 @@ get_status() {
         else
             namespace=$(echo $result | awk '{ print $2 }')
         fi
-        num_pods=$(kubectl get pods --no-headers | wc -l | awk '{ print $1 }')
+        
+        pods=$(get_pods)
 
-        status="${context}:${namespace}(${num_pods})"
+        status="${context}:${namespace}(${pods})"
     fi
         
     echo "$status"
