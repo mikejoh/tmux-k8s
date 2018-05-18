@@ -15,7 +15,7 @@ get_status() {
     else
         context=$(kubectl config current-context)
         context_info=$(kubectl config get-contexts --no-headers)
-        namespace=$(echo "$context_info" | grep "*" | awk '{print $5})')
+        namespace=$(echo "$context_info" | grep "*" | awk '{print $5}')
         cluster=$(echo "$context_info" | grep "*" | awk '{print $3}')
 
         if [ -z "$namespace" ]
