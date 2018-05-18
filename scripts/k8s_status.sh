@@ -14,18 +14,18 @@ get_status() {
         status="kubectl not found!"
     else
         context=$(kubectl config current-context)
-        result=$(kubectl config view | grep namespace)
+        context_info=$(kubectl config get-contexts --no-headers)
+        namespace=$(echo "$context_info" | grep "*" | awk '{print $5})')
+        cluster=$(echo "$context_info" | grep "*" | awk '{print $3}')
 
-        if [ -z "$result" ]
+        if [ -z "$namespace" ]
         then
-            namespace="N/A"
-        else
-            namespace=$(echo $result | awk '{ print $2 }')
+            namespace="none"
         fi
         
         pods=$(get_pods)
 
-        status="${context}:${namespace}(${pods})"
+        status="${context}:${cluster}:${namespace}(${pods})"
     fi
         
     echo "$status"
