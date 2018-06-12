@@ -3,6 +3,7 @@
 This `tmux` plugin displays your `kubectl` context status information in the status bar. 
 
 Example:
+
 ![k8s status bar](status_bar_with_k8s_plugin.png)
 
 From the official Kubernetes documentation:
