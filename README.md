@@ -1,12 +1,13 @@
 # The tmux Kubernetes status plugin
 
-This `tmux` plugin displays your `kubectl` context status information in the status bar.
+This `tmux` plugin displays your `kubectl` context status information in the status bar. 
+
+Example:
+![k8s status bar](status_bar_with_k8s_plugin.png)
 
 From the official Kubernetes documentation:
 
 _A context element in a kubeconfig file is used to group access parameters under a convenient name. Each context has three parameters: **cluster**, **namespace**, and **user**. By default, the kubectl command-line tool uses parameters from the current context to communicate with the cluster._
-
-![k8s status bar](status_bar_with_k8s_plugin.png)
 
 ## Usage
 Add `#{k8s_status}` to your `status-left` or `status-right`:
