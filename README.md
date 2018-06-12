@@ -1,6 +1,9 @@
 # The tmux Kubernetes status plugin
 
-This `tmux` plugin shows you the current Kubernetes context and namespace you're using (+ the number of pods running within the namespace).
+This `tmux` plugin displays your `kubectl` context status information in the status bar.
+
+From the official Kubernetes documentation:
+_A context element in a kubeconfig file is used to group access parameters under a convenient name. Each context has three parameters: **cluster**, **namespace**, and **user**. By default, the kubectl command-line tool uses parameters from the current context to communicate with the cluster._
 
 ![k8s status bar](status_bar_with_k8s_plugin.png)
 
