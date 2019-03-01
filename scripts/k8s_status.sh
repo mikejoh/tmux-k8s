@@ -3,7 +3,7 @@
 # Tmux status bar script to fetch information on k8s environments
 
 get_running_pods() {
-    pods=$(kubectl get pods --no-headers --field-selector=status.phase=Running | wc -l | awk '{ print $1 }')
+    pods=$(kubectl get pods --no-headers --field-selector=status.phase=Running --request-timeout 1s | wc -l | awk '{ print $1 }')
     echo "$pods"
 }
 
@@ -18,14 +18,16 @@ get_status() {
         namespace=$(echo "$context_info" | grep "*" | awk '{print $5}')
         cluster=$(echo "$context_info" | grep "*" | awk '{print $3}')
 
-        if [ -z "$namespace" ]
+        if [ -z "$namespace" -o -z "$context" -o -z "$context_info" ]
         then
-            namespace="none"
+            context="N/A"
+            context_info="N/A"
+            namespace="N/A"
         fi
         
         pods=$(get_running_pods)
 
-        status="${context}:${cluster}:${namespace}(${pods})"
+        status="ctx:${context} clu:${cluster} ns:${namespace} pods:${pods}"
     fi
         
     echo "$status"
