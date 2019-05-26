@@ -1,6 +1,6 @@
 # The tmux Kubernetes status plugin
 
-This `tmux` plugin displays your `kubectl` context status information in the status bar. 
+This `tmux` plugin displays your `kubectl` context status information in the status bar. Written in Go.
 
 Example:
 
@@ -11,7 +11,8 @@ From the official Kubernetes documentation:
 _A context element in a kubeconfig file is used to group access parameters under a convenient name. Each context has three parameters: **cluster**, **namespace**, and **user**. By default, the kubectl command-line tool uses parameters from the current context to communicate with the cluster._
 
 ## Usage
-Add `#{k8s_status}` to your `status-left` or `status-right`:
+1. Run `make build-docker` to compile the binary within a Docker container. The binary is called `tmux-k8s` and will be placed where tmux be configured to look.
+2. Add `#{k8s_status}` to your `status-left` or `status-right`:
 
 Example:
 ```
@@ -20,7 +21,9 @@ set -g status-right '#{k8s_status} %a %Y-%m-%d %H:%M'
 
 The information in the status bar will be presented in the following way:
 
-```<context>:<cluster>:<namespace>(<number of pods>)```
+```
+clu:<cluster name> ns:<namespace> pods:<number of pods across cluster>
+```
 
 ## Installation via Tmux Plugin Manager
 
@@ -39,9 +42,4 @@ mkdir -p ~/.tmux/plugins && git clone https://github.com/mikejoh/tmux-k8s.git ~/
 ```
 2. Press [prefix] + `I` to install.
 
-### Bonus
-
-If you want to use my status bar setup in tmux, or basically use my tmux.conf as is, you can find more info [here][tmux_gist].
-
-[tmux_gist]: https://gist.github.com/mikejoh/d2021745632f404ab8a47a3667168398
 [tpm]: https://github.com/tmux-plugins/tpm
