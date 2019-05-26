@@ -21,7 +21,7 @@ update_status() {
 }
 
 # Commands
-k8s_status="#($CURRENT_DIR/scripts/k8s_status.sh)"
+k8s_status="#($CURRENT_DIR/scripts/tmux-k8s)"
 
 # Substitution, change the color of the background here
 k8s_status_placeholder="\#{k8s_status}"
