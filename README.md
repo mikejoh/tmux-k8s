@@ -1,6 +1,6 @@
-# The tmux Kubernetes status plugin
+# The TMUX Kubernetes status plugin
 
-_Note: Hi! This plugin is not actively maintained at the moment, please check this repository out if you're looking for a similar project: https://github.com/jonmosco/kube-tmux /Mikael_
+**_Note: Hi! This plugin is not actively maintained at the moment, please check this repository out if you're looking for a similar project: https://github.com/jonmosco/kube-tmux /Mikael_**
 
 This `tmux` plugin displays your `kubectl` context status information in the status bar. 
 
